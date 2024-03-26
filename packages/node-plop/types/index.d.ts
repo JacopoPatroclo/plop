@@ -199,6 +199,13 @@ export type CustomActionFunction = (
 ) => Promise<string> | string;
 
 /**
+ * This interface is meant to be used by consumer of this package.
+ * It's use is to allow the user to define their own custom action types
+ * and extends the ActionType using typescript merging interface feature.
+ */
+export interface CustomExternalActionConfig extends ActionConfig {}
+
+/**
  * Ideally, we'd have `CustomActionConfig` here,
  * but if we do, we lose the ability to strictly type an action,
  * since "type: 'append'" is now considered a custom action config
@@ -215,7 +222,8 @@ export type ActionType =
   | AddManyActionConfig
   | ModifyActionConfig
   | AppendActionConfig
-  | CustomActionFunction;
+  | CustomActionFunction
+  | CustomExternalActionConfig;
 
 export interface ActionConfig {
   type: string;

@@ -246,6 +246,21 @@ export default function (plop) {
 };
 ```
 
+if you are using Typescript you can extend the ActionType to include your custom action type like so:
+
+```typescript
+
+declare module 'node-plop' {
+	interface CustomExternalActionConfig extends ActionConfig {
+		// Your custom action type name
+		type: 'doTheThing',
+		// Your expected properties
+		configProp: string
+	}
+}
+
+```
+
 ## setPrompt
 [Inquirer](https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/README.md) provides many types of prompts out of the box, but it also allows developers to build prompt plugins. If you'd like to use a prompt plugin, you can register it with `setPrompt`. For more details see the [Inquirer documentation for registering prompts](https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/README.md#inquirerregisterpromptname-prompt). Also check out the [plop community driven list of custom prompts](https://github.com/plopjs/awesome-plop#inquirer-prompts).
 
